@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Car Rental</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header">
+        <!-- header.html -->
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">Car Rental</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                            <li class="nav-item"><a class="nav-link" href="rentals.html">Rentals</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <!-- Checkout Section -->
+    <section class="container my-5">
+        <h2 class="text-center">Checkout</h2>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <form action="submit_checkout.php" method="POST">
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" name="fullName" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Delivery Address</label>
+                        <textarea class="form-control" id="address" name="address" rows="4" required></textarea>
+                    </div>
+
+                    <h4>Rental Details</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Car</th>
+                                <th>Pick-up Date</th>
+                                <th>Return Date</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rentalDetails">
+                            <!-- Rental Details will be inserted dynamically -->
+                            <tr>
+                                <td>Luxury Sedan</td>
+                                <td>2025-03-01</td>
+                                <td>2025-03-05</td>
+                                <td>$150</td>
+                                <td>1</td>
+                                <td>$150</td>
+                            </tr>
+                            <tr>
+                                <td>SUV</td>
+                                <td>2025-03-02</td>
+                                <td>2025-03-06</td>
+                                <td>$200</td>
+                                <td>1</td>
+                                <td>$200</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="d-flex justify-content-between">
+                        <h4>Total Price: $350</h4>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="paymentMethod" class="form-label">Payment Method</label>
+                        <select class="form-select" id="paymentMethod" name="paymentMethod" required>
+                            <option value="cash">Cash on Delivery</option>
+                            <option value="card">Credit/Debit Card</option>
+                        </select>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="bg-light py-5">
+        <div class="container text-center">
+            <h2>Need Help?</h2>
+            <p>Contact us for more information or assistance with your booking.</p>
+            <a href="contact.html" class="btn btn-dark">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer">
+        <!-- footer.html -->
+        <footer class="bg-dark text-white text-center py-3">
+            <div class="container">
+                <p>&copy; 2025 Car Rental. All Rights Reserved.</p>
+                <p><a href="contact.html" class="text-white">Contact Us</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+<!-- footer.html -->
+<footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+        <p>&copy; 2025 Car Rental. All Rights Reserved.</p>
+        <p><a href="contact.html" class="text-white">Contact Us</a></p>
+    </div>
+</footer>
+
+<!-- Example of script.js to include header and footer dynamically -->
+document.addEventListener("DOMContentLoaded", function() {
+fetch("includes/header.html")
+.then(response => response.text())
+.then(data => document.getElementById("header").innerHTML = data);
+fetch("includes/footer.html")
+.then(response => response.text())
+.then(data => document.getElementById("footer").innerHTML = data);
+});
