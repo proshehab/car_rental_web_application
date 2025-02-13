@@ -39,8 +39,16 @@
         <h2 class="text-center">Login to Your Account</h2>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <form action="{{route('login')}}" method="POST">
+                <form action="{{route('account.progressRegister')}}" method="POST">
                     @csrf
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Nmae</label>
+                        <input type="text" value="{{old('name')}}" class="form-control @error('naem') is-invalid @enderror" id="email" name="email">
+                        @error('name')
+                             <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email Address</label>
                         <input type="text" value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror" id="email" name="email">
@@ -62,7 +70,7 @@
                     </div>
                 </form>
                 <p class="text-center mt-3">
-                    Don't have an account? <a href="{{route('accoutnRegister')}}">Sign Up</a>
+                    Don't have an account? <a href="signup.html">Sign Up</a>
                 </p>
                 <p class="text-center">
                     <a href="forgot_password.html">Forgot Password?</a>
