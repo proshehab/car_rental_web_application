@@ -15,7 +15,7 @@
         <!-- Sidebar -->
         <div class="bg-dark text-white" style="width: 250px; height: 100vh;">
             <div class="container-fluid">
-                <h3 class="text-center py-4">User Panel</h3>
+                <h3 class="text-center py-4">Admin Panel</h3>
                 <ul class="nav flex-column px-2">
                     <li class="nav-item">
                         <a class="nav-link text-white" href="admin_dashboard.html">

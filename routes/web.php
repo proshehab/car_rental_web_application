@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\RentalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -41,6 +42,8 @@ Route::group(['prefix' => 'account'],function(){
     });
 });
 
+
+Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login');
 
 
 
