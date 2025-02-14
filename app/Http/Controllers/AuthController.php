@@ -37,7 +37,7 @@ class AuthController extends Controller
         } else{
             return redirect()->route('account.login')
             ->withInput()
-            ->withError($validator);
+            ->withErrors($validator);
         }
 
     }
@@ -85,13 +85,13 @@ class AuthController extends Controller
         } else{
             return redirect()->route('login')
             ->withInput()
-            ->withError($validator);
+            ->withErrors($validator);
         }
 
     }
 
     // Login method
- 
+
     // try {
     //     // Validate the incoming request data
     //     $validator = Validator::make($request->all(), [

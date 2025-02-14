@@ -70,7 +70,7 @@
                     </div>
                 </form>
                 <p class="text-center mt-3">
-                    Don't have an account? <a href="signup.html">Sign Up</a>
+                    Don't have an account? <a href="{{route('account.login')}}">Sign Up</a>
                 </p>
                 <p class="text-center">
                     <a href="forgot_password.html">Forgot Password?</a>

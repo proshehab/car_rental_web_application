@@ -62,7 +62,7 @@
                     </div>
                 </form>
                 <p class="text-center mt-3">
-                    Don't have an account? <a href="#">Sign Up</a>
+                    Don't have an account? <a href="{{route('accoutnRegister')}}">Sign Up</a>
                 </p>
                 <p class="text-center">
                     <a href="forgot_password.html">Forgot Password?</a>

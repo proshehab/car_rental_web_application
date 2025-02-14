@@ -12,11 +12,11 @@ Route::get('/', function () {
 });
 
 Route::get('/account/login', [AuthController::class, 'index'])->name('account.login');
-
 Route::post('/account/authenicate', [AuthController::class, 'authenicate'])->name('account.authenicate');
-//Route::post('/register', [AuthController::class, 'register'])->name('accoutnRegister');
-//Route::get('/register', [AuthController::class, 'register'])->name('accoutnRegister');
-//Route::post('/progressRegister', [AuthController::class, 'progressRegister'])->name('account.progressRegister');
+Route::get('/accoutn/register', [AuthController::class, 'register'])->name('accoutnRegister');
+// Route::post('/register', [AuthController::class, 'register'])->name('accoutnRegister');
+
+Route::post('/progressRegister', [AuthController::class, 'progressRegister'])->name('account.progressRegister');
 Route::get('/account/dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
 
 // Route::middleware(['auth'])->group(function () {
