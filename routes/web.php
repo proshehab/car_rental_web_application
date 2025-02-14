@@ -11,13 +11,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::get('/account/login', [AuthController::class, 'index'])->name('account.login');
 
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/register', [AuthController::class, 'register'])->name('accoutnRegister');
-Route::get('/register', [AuthController::class, 'register'])->name('accoutnRegister');
-Route::post('/progressRegister', [AuthController::class, 'progressRegister'])->name('account.progressRegister');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::post('/account/authenicate', [AuthController::class, 'authenicate'])->name('account.authenicate');
+//Route::post('/register', [AuthController::class, 'register'])->name('accoutnRegister');
+//Route::get('/register', [AuthController::class, 'register'])->name('accoutnRegister');
+//Route::post('/progressRegister', [AuthController::class, 'progressRegister'])->name('account.progressRegister');
+Route::get('/account/dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('booking', [RentalController::class, 'index'])->middleware('customer');

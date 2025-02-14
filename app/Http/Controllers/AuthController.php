@@ -16,6 +16,32 @@ class AuthController extends Controller
     public function index(){
         return view('admin.auth.login');
     }
+
+
+    public function authenicate(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required|string|min:8',
+        ]);
+
+
+        if ($validator->passes()){
+
+            if(Auth::attempt(['email'=> $request->email,'password'=> $request->password])){
+
+            } else {
+                return redirect()->route('account.login')->with('Either email or password is incorrect');
+            }
+
+        } else{
+            return redirect()->route('account.login')
+            ->withInput()
+            ->withError($validator);
+        }
+
+    }
+
     // Register method
     public function register(Request $request)
     {
@@ -65,30 +91,7 @@ class AuthController extends Controller
     }
 
     // Login method
-    public function login(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required|string|min:8',
-        ]);
-
-
-        if ($validator->passes()){
-
-            if(Auth::attempt(['email'=> $request->email,'password'=> $request->password])){
-
-            } else {
-                return redirect()->route('login')->with('Either email or password is incorrect');
-            }
-
-        } else{
-            return redirect()->route('login')
-            ->withInput()
-            ->withError($validator);
-        }
-
-    }
-
+ 
     // try {
     //     // Validate the incoming request data
     //     $validator = Validator::make($request->all(), [

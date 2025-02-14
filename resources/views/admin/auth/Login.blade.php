@@ -39,7 +39,7 @@
         <h2 class="text-center">Login to Your Account</h2>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <form action="{{route('login')}}" method="POST">
+                <form action="{{route('account.authenicate')}}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label">Email Address</label>
@@ -62,7 +62,7 @@
                     </div>
                 </form>
                 <p class="text-center mt-3">
-                    Don't have an account? <a href="{{route('accoutnRegister')}}">Sign Up</a>
+                    Don't have an account? <a href="#">Sign Up</a>
                 </p>
                 <p class="text-center">
                     <a href="forgot_password.html">Forgot Password?</a>
