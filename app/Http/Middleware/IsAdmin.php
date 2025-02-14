@@ -10,10 +10,10 @@ class IsAdmin
 {
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role === 'admin') {
-            return $next($request);
+        if (Auth::guard('admin')->check()) {
+            return redirect()->route('admin.dashboard');
         }
 
-        return response()->json(['message' => 'You do not have admin access'], 403);
+        return $next ($request);
     }
 }

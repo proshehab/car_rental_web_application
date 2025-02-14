@@ -43,10 +43,19 @@ Route::group(['prefix' => 'account'],function(){
 });
 
 
-Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login');
 
 
+Route::group(['prefix' => 'admin'],function(){
+    Route::group(['middleware' => 'admin.guest'],function(){
+        Route::get('login', [LoginController::class, 'index'])->name('admin.login');
+        Route::post('authenicate', [LoginController::class, 'authenicate'])->name('admin.authenicate');
+    });
 
+    Route::group(['middleware' => 'admin.auth'],function(){
+        Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
+    });
+});
 
 // Route::post('/register', [AuthController::class, 'register'])->name('accoutnRegister');
 

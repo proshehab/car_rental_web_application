@@ -10,10 +10,11 @@ class Authenticated
 {
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check()) {
-            return $next($request);
+        if (!Auth::guard('admin')->check()) {
+            return redirect()->route('admin.login');
         }
 
-        return response()->json(['message' => 'Unauthenticated'], 401);
+        return $next($request);
+
     }
 }

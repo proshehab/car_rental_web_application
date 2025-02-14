@@ -7,7 +7,7 @@
         <h2 class="text-center">Amin Login</h2>
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <form action="{{route('account.authenicate')}}" method="POST">
+                <form action="{{route('admin.authenicate')}}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label">Email Address</label>

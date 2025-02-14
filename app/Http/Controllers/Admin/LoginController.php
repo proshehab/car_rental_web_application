@@ -25,17 +25,29 @@ class LoginController extends Controller
         if ($validator->passes()){
 
             if(Auth::guard('admin')->attempt(['email'=> $request->email,'password'=> $request->password])){
-                return redirect()->route('account.dashboard');
+                
+                if(Auth::guard('admin')->user()->role != "admin"){
+                    Auth::guard('admin')->logout();
+                    return redirect()->route('admin.login')->with('Your are not authorize this page');
+                }
+                return redirect()->route('admin.dashboard');
             } else {
-                return redirect()->route('account.login')->with('Either email or password is incorrect');
+                return redirect()->route('admin.login')->with('Either email or password is incorrect');
             }
 
         } else{
-            return redirect()->route('account.login')
+            return redirect()->route('admin.login')
             ->withInput()
             ->withErrors($validator);
         }
 
+    }
+
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin.login');
     }
 
 }
