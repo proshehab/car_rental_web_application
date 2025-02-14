@@ -22,14 +22,14 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
-            'password' => 'required|string|min:8',
+            'password' => 'required'
         ]);
 
 
         if ($validator->passes()){
 
             if(Auth::attempt(['email'=> $request->email,'password'=> $request->password])){
-
+                return redirect()->route('account.dashboard');
             } else {
                 return redirect()->route('account.login')->with('Either email or password is incorrect');
             }
@@ -67,8 +67,9 @@ class AuthController extends Controller
 
     public function progressRegister(Request $request){
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email| unique:users',
-            'password' => 'required|string|min:8',
+            'name' => 'required | Max:20',
+            'email' => 'required |email| unique:users',
+            'password' => 'required|confirmed',
         ]);
 
         if ($validator->passes()){
@@ -80,10 +81,10 @@ class AuthController extends Controller
             $user->role = 'customer';
             $user->save();
 
-            return redirect()->route('login')->with('success','You have register succfully');
+            return redirect()->route('account.login')->with('success','You have register succfully');
 
         } else{
-            return redirect()->route('login')
+            return redirect()->route('accoutnRegister')
             ->withInput()
             ->withErrors($validator);
         }
@@ -137,9 +138,9 @@ class AuthController extends Controller
 
 
     // Logout method
-    // public function logout(Request $request)
-    // {
-    //     Auth::logout();
-    //     return response()->json(['message' => 'Logged out successfully!']);
-    // }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route('account.login');
+    }
 }

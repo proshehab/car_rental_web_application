@@ -3,45 +3,50 @@
 
 @section('content')
     <!-- Login Section -->
-    <section class="container my-5">
-        <h2 class="text-center">Login to Your Account</h2>
+     <!-- Sign Up Section -->
+     <section class="container my-5">
+        <h2 class="text-center">Create Your Account</h2>
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <form action="{{route('account.progressRegister')}}" method="POST">
                     @csrf
-
                     <div class="mb-3">
-                        <label for="email" class="form-label">Nmae</label>
-                        <input type="text" value="{{old('name')}}" class="form-control @error('naem') is-invalid @enderror" id="email" name="email">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror" id="name" name="name">
                         @error('name')
                              <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
+
                     <div class="mb-3">
                         <label for="email" class="form-label">Email Address</label>
-                        <input type="text" value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror" id="email" name="email">
+                        <input type="email" value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror" id="email" name="email">
                         @error('email')
-                             <span class="text-danger">{{ $message }}</span>
+                        <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
 
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control @error('email') is-invalid @enderror" id="password" name="password">
-                    @error('password')
+                        <input type="password" value="{{old('password')}}" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
+                        @error('password')
                         <span class="text-danger">{{ $message }}</span>
-                   @enderror
+                        @enderror
                     </div>
 
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" value="{{old('password')}}" class="form-control @error('password') is-invalid @enderror" id="password_confirmation" name="password_confirmation">
+                        @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                     <div class="d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
                     </div>
                 </form>
                 <p class="text-center mt-3">
-                    Don't have an account? <a href="{{route('account.login')}}">Sign Up</a>
-                </p>
-                <p class="text-center">
-                    <a href="forgot_password.html">Forgot Password?</a>
+                    Already have an account? <a href="{{route('account.login')}}">Login</a>
                 </p>
             </div>
         </div>

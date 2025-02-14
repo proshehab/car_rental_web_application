@@ -20,7 +20,13 @@ class PageController extends Controller
         return view('frontend.booking.index');
     }
 
+    public function bookCar(){
+        return view('frontend.booking.book_a_car');
+    }
+
     public function contact (){
         return view('frontend.contact.index');
     }
+
+
 }

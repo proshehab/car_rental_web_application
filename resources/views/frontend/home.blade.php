@@ -22,7 +22,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Luxury Sedan</h5>
                     <p class="card-text">Comfort and style for your journey.</p>
-                    <a href="booking.html" class="btn btn-primary">Book Now</a>
+                    <a href="{{route('bookCarPage')}}" class="btn btn-primary">Book Now</a>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <h5 class="card-title">SUV</h5>
                     <p class="card-text">Spacious and reliable for any trip.</p>
-                    <a href="booking.html" class="btn btn-primary">Book Now</a>
+                    <a href="{{route('bookCarPage')}}" class="btn btn-primary">Book Now</a>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Convertible</h5>
                     <p class="card-text">Enjoy the breeze in a stylish ride.</p>
-                    <a href="booking.html" class="btn btn-primary">Book Now</a>
+                    <a href="{{route('bookCarPage')}}" class="btn btn-primary">Book Now</a>
                 </div>
             </div>
         </div>

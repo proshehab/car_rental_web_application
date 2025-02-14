@@ -19,19 +19,36 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/', 'index')->name('homePage');
     Route::get('/about', 'about')->name('aboutPage');
     Route::get('/rentals', 'rentals')->name('rentalsPage');
+    Route::get('/book-a-car', 'bookCar')->name('bookCarPage');
     Route::get('/contact', 'contact')->name('contactPage');
     // Route::get('/blog', 'blog')->name('blog.page');
     // Route::get('/blog-post/{id}', 'blog_post')->name('blog_post');
 });
 
 
-Route::get('/account/login', [AuthController::class, 'index'])->name('account.login');
-Route::post('/account/authenicate', [AuthController::class, 'authenicate'])->name('account.authenicate');
-Route::get('/accoutn/register', [AuthController::class, 'register'])->name('accoutnRegister');
+
+Route::group(['prefix' => 'account'],function(){
+    Route::group(['middleware' => 'guest'],function(){
+        Route::get('login', [AuthController::class, 'index'])->name('account.login');
+        Route::get('register', [AuthController::class, 'register'])->name('accoutnRegister');
+        Route::post('progressRegister', [AuthController::class, 'progressRegister'])->name('account.progressRegister');
+        Route::post('authenicate', [AuthController::class, 'authenicate'])->name('account.authenicate');
+    });
+
+    Route::group(['middleware' => 'auth'],function(){
+        Route::get('logout', [AuthController::class, 'logout'])->name('account.logout');
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
+    });
+});
+
+
+
+
+
 // Route::post('/register', [AuthController::class, 'register'])->name('accoutnRegister');
 
-Route::post('/progressRegister', [AuthController::class, 'progressRegister'])->name('account.progressRegister');
-Route::get('/account/dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
+
+
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('booking', [RentalController::class, 'index'])->middleware('customer');
