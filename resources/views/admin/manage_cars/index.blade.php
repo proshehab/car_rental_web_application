@@ -42,18 +42,26 @@
                         <td>{{ $car->year ?? '' }}</td>
                         <td>{{ $car->car_type ?? '' }}</td>
                         <td>{{ $car->daily_rent_price ?? '' }}</td>
-                        <td>{{ $car->availability ?? '' }}</td>
+
                         <td>
-                            <img src="{{ asset('storage/'.$car->image) }}" alt="Car Image" style="width: 50px; height: 50px; object-fit: cover;">
+                            @if($car->availability)
+                                Available
+                            @else
+                                Not Available
+                            @endif
+                        </td>
+                        
+                        <td>
+                            <img src="{{ asset($car->image) }}" alt="Car Image" style="width: 50px; height: 50px; object-fit: cover;">
                         </td>
                         <td>
                             <!-- Add Action Buttons (Edit, Delete) -->
-                            <a href="{{ route('admin.manage-cars.edit', $car->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                            {{-- <form action="{{ route('admin.manage-cars.delete', $car->id) }}" method="POST" style="display: inline-block;">
+                            <a href="{{ route('admin.manage-cars.edit', $car->id) }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <form action="{{ route('admin.manage-cars.delete', $car->id) }}" method="POST" style="display: inline-block;">
                                 @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form> --}}
+                                @method('GET')
+                                <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

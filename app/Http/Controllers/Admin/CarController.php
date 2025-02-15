@@ -72,4 +72,24 @@ class CarController extends Controller
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
+    public function destroy(string $id)
+    {
+        $cars = Car::findOrFail($id);
+        $cars->delete();
+
+        // Alert::success('Data Delete Successfully');
+        return redirect()->back();
+    }
+
 }
