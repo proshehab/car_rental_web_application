@@ -54,6 +54,8 @@ Route::group(['prefix' => 'admin'],function(){
     Route::group(['middleware' => 'admin.auth'],function(){
         Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
         Route::get('manage-cars', [CarController::class, 'index'])->name('admin.manage-cars');
+        Route::get('manage-cars/add', [CarController::class, 'add'])->name('admin.manage-cars.add');
+        Route::post('storeCar', [CarController::class, 'storeCar'])->name('admin.manage-cars.storeCar');
         Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
     });
 });

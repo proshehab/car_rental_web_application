@@ -5,72 +5,55 @@
 @section('content')
 
   <!-- Main Content -->
-  <div class="container-fluid">
+  <div class="content">
   
 
-    <!-- Dashboard Overview Section -->
     <section class="container my-5">
-        <h2 class="text-center">Admin Dashboard Overview</h2>
+        <h2 class="text-center mb-4"><i class="fas fa-chart-bar text-primary"></i> Admin Dashboard Overview</h2>
         <div class="row">
             <!-- Total Cars -->
             <div class="col-md-3 mb-4">
-                <div class="card">
+                <div class="card bg-info text-white">
                     <div class="card-body">
-                        <h5 class="card-title">Total Cars</h5>
+                        <h5 class="card-title"><i class="fas fa-car"></i> Total Cars</h5>
                         <p class="card-text">10 Cars Available</p>
-                        <a href="car_management.html" class="btn btn-primary">Manage Cars</a>
+                        <a href="car_management.html" class="btn btn-light">Manage Cars</a>
                     </div>
                 </div>
             </div>
-            <!-- Total Bookings -->
+            <!-- Available Cars -->
             <div class="col-md-3 mb-4">
-                <div class="card">
+                <div class="card bg-success text-white">
                     <div class="card-body">
-                        <h5 class="card-title">Total Bookings</h5>
-                        <p class="card-text">25 Bookings Made</p>
-                        <a href="booking_management.html" class="btn btn-primary">Manage Bookings</a>
+                        <h5 class="card-title"><i class="fas fa-car-side"></i> Available Cars</h5>
+                        <p class="card-text">7 Cars Available</p>
+                        <a href="car_management.html" class="btn btn-light">Manage Cars</a>
                     </div>
                 </div>
             </div>
-            <!-- Total Users -->
+            <!-- Total Rentals -->
             <div class="col-md-3 mb-4">
-                <div class="card">
+                <div class="card bg-primary text-white">
                     <div class="card-body">
-                        <h5 class="card-title">Total Users</h5>
-                        <p class="card-text">150 Registered Users</p>
-                        <a href="user_management.html" class="btn btn-primary">Manage Users</a>
+                        <h5 class="card-title"><i class="fas fa-file-contract"></i> Total Rentals</h5>
+                        <p class="card-text">25 Rentals Made</p>
+                        <a href="booking_management.html" class="btn btn-light">Manage Rentals</a>
                     </div>
                 </div>
             </div>
-            <!-- Settings -->
+            <!-- Total Earnings -->
             <div class="col-md-3 mb-4">
-                <div class="card">
+                <div class="card bg-warning text-dark">
                     <div class="card-body">
-                        <h5 class="card-title">Settings</h5>
-                        <p class="card-text">Manage system settings</p>
-                        <a href="settings.html" class="btn btn-primary">Settings</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Latest Activity Section -->
-        <div class="row">
-            <div class="col-md-12">
-                <h3>Latest Activities</h3>
-                <div class="card">
-                    <div class="card-body">
-                        <ul>
-                            <li>User John Doe made a booking for SUV (ID: 1024).</li>
-                            <li>User Jane Smith updated their profile details.</li>
-                            <li>New car 'Luxury Sedan' added to the fleet.</li>
-                            <li>User Michael Johnson canceled their booking.</li>
-                        </ul>
+                        <h5 class="card-title"><i class="fas fa-dollar-sign"></i> Total Earnings</h5>
+                        <p class="card-text">$15,000</p>
+                        <a href="booking_management.html" class="btn btn-light">View Details</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    
 </div>
 
 

@@ -1,38 +1,21 @@
    <!-- Sidebar -->
-   <div class="bg-dark text-white" style="width: 250px; height: 100vh;">
-    <div class="container-fluid">
-        <h3 class="text-center py-4">Admin Panel</h3>
-        <ul class="nav flex-column px-2">
-            <li class="nav-item">
-                <a class="nav-link text-white" href="admin_dashboard.html">
-                    Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="{{route('admin.manage-cars')}}">
-                    Manage Cars
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="booking_management.html">
-                    Manage Bookings
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="user_management.html">
-                    Manage Users
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="settings.html">
-                    Settings
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="{{route('admin.logout')}}">
-                    Logout
-                </a>
-            </li>
-        </ul>
-    </div>
+   <div class="sidebar">
+    <h3 class="text-center py-4">Admin Panel</h3>
+    <a href="{{route('admin.dashboard')}}"><i class="fas fa-tachometer-alt me-2 "></i> Dashboard</a
+    >
+    <a href="{{route('admin.manage-cars')}} "
+        ><i class="fas fa-car me-2"></i> Manage Cars</a
+    >
+    <a href="booking_management.html"
+        ><i class="fas fa-book me-2"></i> Manage Bookings</a
+    >
+    <a href="user_management.html"
+        ><i class="fas fa-users me-2"></i> Manage Users</a
+    >
+    <a href="settings.html"
+        ><i class="fas fa-cogs me-2"></i> Settings</a
+    >
+    <a href="{{route('admin.logout')}}"
+        ><i class="fas fa-sign-out-alt me-2"></i> Logout</a
+    >
 </div>
