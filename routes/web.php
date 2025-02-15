@@ -26,7 +26,7 @@ Route::controller(PageController::class)->group(function () {
     // Route::get('/blog-post/{id}', 'blog_post')->name('blog_post');
 });
 
-
+// Customer Route
 
 Route::group(['prefix' => 'account'],function(){
     Route::group(['middleware' => 'guest'],function(){
@@ -43,7 +43,7 @@ Route::group(['prefix' => 'account'],function(){
 });
 
 
-
+// Admin Route
 
 Route::group(['prefix' => 'admin'],function(){
     Route::group(['middleware' => 'admin.guest'],function(){
@@ -53,6 +53,7 @@ Route::group(['prefix' => 'admin'],function(){
 
     Route::group(['middleware' => 'admin.auth'],function(){
         Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('manage-cars', [CarController::class, 'index'])->name('admin.manage-cars');
         Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
     });
 });
