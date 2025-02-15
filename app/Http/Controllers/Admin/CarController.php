@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Car;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class CarController extends Controller
 {
@@ -27,24 +29,47 @@ class CarController extends Controller
         'year' => 'required|integer|min:1900|max:' . date('Y'),
         'car_type' => 'required|string',
         'daily_rent_price' => 'required|numeric|min:0',
-        'availability_status' => 'required|boolean',
-        'car_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'availability' => 'required|boolean',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
-    $imagePath = $request->file('car_image')->store('public/upload/car_image/');
 
-    Car::create([
-        'name' => $request->car_name,
-        'brand' => $request->brand,
-        'model' => $request->model,
-        'year' => $request->year,
-        'car_type' => $request->car_type,
-        'daily_rent_price' => $request->daily_rent_price,
-        'availability' => $request->availability_status,
-        'image' => $imagePath,
-    ]);
+    if ($request->file('image')){
+        $manager = new ImageManager(new Driver());
+        $name_gen = hexdec(uniqid()).'.'. $request->file('image')->getClientOriginalExtension();
+        $img = $manager->read($request->file('image'));
+        $img = $img->resize(500,500);
+
+        $img->toJpeg(80)->save(base_path('public/upload/car_images/'.$name_gen));
+        $save_url = 'upload/car_images/' .$name_gen;
+
+        Car::create([
+            'name' => $request->car_name,
+            'brand' => $request->brand,
+            'model' => $request->model,
+            'year' => $request->year,
+            'car_type' => $request->car_type,
+            'daily_rent_price' => $request->daily_rent_price,
+            'availability' => $request->availability,
+            'image' => $save_url,
+        ]);
+    }
+
+
+    // $imagePath = $request->file('car_image')->store('public/upload/car_image/');
+
+   
 
     return redirect()->route('admin.manage-cars')->with('success', 'Car added successfully!');
 }
+
+
+    public function edit ($id){
+
+    $cars= Car::findOrFail($id);  
+    return view("admin.manage_cars.edit",compact('cars'));
+
+
+    }
 
 }

@@ -2,14 +2,14 @@
 @section('title','Car Rental - Home')
 
 @section('content')
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="content p-4">
 
       <!-- Add New Car Form -->
       <section class="container">
         <h2 class="text-right mb-12">Add New Car</h2>
         <div class="mb-3 d-flex justify-content-end">
-            <a href="{{route('admin.manage-cars')}}" class="btn btn-primary"> <i class="fas fa-car me-2"></i>Add Car</a>
+            <a href="{{route('admin.manage-cars')}}" class="btn btn-primary"> <i class="fas fa-car me-2"></i>Car List</a>
         </div>
         <div class="card shadow-sm p-4">
             <form
@@ -139,16 +139,17 @@
                             >Availability Status :</label
                         >
                         <select
-                            class="form-select @error('availability_status') is-invalid @enderror"
+                            class="form-select @error('availability') is-invalid @enderror"
                             id="availability_status"
-                            name="availability_status"
+                            name="availability"
                             
                         >
-                            <option value="">Select Availability Status</option>
-                            <option value="1" {{ old('availability_status') == '1' ? 'selected' : '' }}>Available</option>
-                            <option value="0" {{ old('availability_status') == '0' ? 'selected' : '' }}>Not Available</option>
+                        
+                           
+                            <option value="1" {{ old('availability') == '1' ? 'selected' : '' }}>Available</option>
+                            <option value="0" {{ old('availability') == '0' ? 'selected' : '' }}>Not Available</option>
                         </select>
-                        @error('availability_status')
+                        @error('availability')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -161,8 +162,8 @@
                         <input
                             type="file"
                             class="form-control @error('car_image') is-invalid @enderror"
-                            id="car_image"
-                            name="car_image"
+                            id="image"
+                            name="image"
                             accept="image/*"
                             
                         />
@@ -171,6 +172,10 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <img id="showImage" src="{{ url('no_image.jpg') }}" alt="Admin"
+                            style="width:100px; height: 100px;">
                     </div>
                 </div>
                 <div class="mt-4 text-right">
@@ -185,5 +190,21 @@
 
 
 </div>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $('#image').change(function(e){
+            var reader = new FileReader();
+            reader.onload = function(e){
+                $('#showImage').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+
+</script>
        
 @endsection

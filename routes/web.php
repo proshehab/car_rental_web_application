@@ -55,6 +55,8 @@ Route::group(['prefix' => 'admin'],function(){
         Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
         Route::get('manage-cars', [CarController::class, 'index'])->name('admin.manage-cars');
         Route::get('manage-cars/add', [CarController::class, 'add'])->name('admin.manage-cars.add');
+        Route::get('manage-cars/edit/{id}', [CarController::class, 'edit'])->name('admin.manage-cars.edit');
+        Route::post('manage-cars/edit/{id}', [CarController::class, 'update'])->name('admin.manage-cars.update');
         Route::post('storeCar', [CarController::class, 'storeCar'])->name('admin.manage-cars.storeCar');
         Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
     });
