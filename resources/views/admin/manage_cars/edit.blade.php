@@ -17,18 +17,20 @@
                 enctype="multipart/form-data"
             >
                 @csrf
-                @method('PUT')
+                {{-- <input type="hidden" name="id" value="{{ $cars->id }}"> --}}
+                <input type="hidden" name="old_image" value="{{ $cars->image }}">
+
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label for="car_name" class="form-label">Car Name :</label>
                         <input
                             type="text"
-                            class="form-control @error('car_name') is-invalid @enderror"
-                            name="car_name"
-                            value="{{ old('car_name', $cars->name) }}"
-                            id="car_name"
+                            class="form-control @error('name') is-invalid @enderror"
+                            name="name"
+                            value="{{$cars->name }}"
+                            id="name"
                         />
-                        @error('car_name')
+                        @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

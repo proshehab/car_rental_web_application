@@ -60,7 +60,14 @@ class CarController extends Controller
 
 
 
-    return redirect()->route('admin.manage-cars')->with('success', 'Car added successfully!');
+    // return redirect()->route('admin.manage-cars')->with('success', 'Car added successfully!');
+
+    $notification = array(
+        'message' => 'Car Inserted Successfully',
+        'alert-type' => 'success'
+    );
+
+    return redirect()->route('admin.manage-cars')->with($notification);
 }
 
 
@@ -73,13 +80,14 @@ class CarController extends Controller
     }
 
 
-    public function update(Request $request){
+    public function update(Request $request,$id){
 
-        $hero_id = $request->id;
+           //dd($request->all());
+        // $hero_id = $request->id;
         $old_img = $request->old_image;
 
         $request->validate([
-            'car_name' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'brand' => 'required|string|max:255',
             'model' => 'required|string|max:255',
             'year' => 'required|integer|min:1900|max:' . date('Y'),
@@ -101,8 +109,8 @@ class CarController extends Controller
             $save_url = 'upload/car_images/' . $name_gen;
 
             // Update the Hero record with the new image
-            Car::create([
-                'name' => $request->car_name,
+            Car::findOrFail($id)->update([
+                'name' => $request->name,
                 'brand' => $request->brand,
                 'model' => $request->model,
                 'year' => $request->year,
@@ -113,15 +121,15 @@ class CarController extends Controller
             ]);
 
             $notification = array(
-                'message' => 'Home Updated with Image Successfully',
+                'message' => 'Car Updated with Image Successfully',
                 'alert-type' => 'success',
             );
 
-            return redirect()->route('home.index')->with($notification);
+            return redirect()->route('admin.manage_cars.edit')->with($notification);
         } else {
             // Update the Hero record without changing the image
-            Car::create([
-                'name' => $request->car_name,
+            Car::findOrFail($id)->update([
+                'name' => $request->name,
                 'brand' => $request->brand,
                 'model' => $request->model,
                 'year' => $request->year,
@@ -132,25 +140,14 @@ class CarController extends Controller
             ]);
 
             $notification = array(
-                'message' => 'Home Updated without Image!',
+                'message' => 'Car Updated without Image!',
                 'alert-type' => 'error',
             );
 
-            return redirect()->route('home.index')->with($notification);
+            return redirect()->route('admin.manage_cars.edit')->with($notification);
         }
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
     public function destroy(string $id)
     {
