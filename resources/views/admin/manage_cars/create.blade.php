@@ -27,7 +27,7 @@
                             type="text"
                             class="form-control @error('car_name') is-invalid @enderror" name="car_name" value="{{ old('car_name') }}"
                             id="car_name"
-                            
+
                         />
                         @error('car_name')
                         <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                             id="brand"
                             name="brand"
                             value="{{ old('brand') }}"
-                            
+
                         />
                         @error('brand')
                         <span class="invalid-feedback" role="alert">
@@ -63,7 +63,7 @@
                             id="model"
                             name="model"
                             value="{{ old('model') }}"
-                            
+
                         />
                         @error('model')
                         <span class="invalid-feedback" role="alert">
@@ -81,7 +81,7 @@
                             id="year"
                             name="year"
                             value="{{ old('year') }}"
-                            
+
                         />
                         @error('year')
                         <span class="invalid-feedback" role="alert">
@@ -97,7 +97,7 @@
                             class="form-select @error('car_type') is-invalid @enderror"
                             id="car_type"
                             name="car_type"
-                            
+
                         >
                             <option value="">Select Car Type</option>
                             <option value="SUV">SUV</option>
@@ -124,7 +124,7 @@
                             id="daily_rent_price"
                             name="daily_rent_price"
                             value="{{ old('daily_rent_price') }}"
-                            
+
                         />
                         @error('daily_rent_price')
                         <span class="invalid-feedback" role="alert">
@@ -142,10 +142,10 @@
                             class="form-select @error('availability') is-invalid @enderror"
                             id="availability_status"
                             name="availability"
-                            
+
                         >
-                        
-                           
+
+
                             <option value="1" {{ old('availability') == '1' ? 'selected' : '' }}>Available</option>
                             <option value="0" {{ old('availability') == '0' ? 'selected' : '' }}>Not Available</option>
                         </select>
@@ -165,18 +165,19 @@
                             id="image"
                             name="image"
                             accept="image/*"
-                            
+
                         />
+                        <img id="showImage" src="{{ url('no_image.jpg') }}" alt="Car Image" style="width: 100px; margin-top: 10px;">
                         @error('car_image')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <img id="showImage" src="{{ url('no_image.jpg') }}" alt="Admin"
                             style="width:100px; height: 100px;">
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="mt-4 text-right">
                     <button type="submit" class="btn btn-success me-2">
@@ -206,5 +207,5 @@
     });
 
 </script>
-       
+
 @endsection

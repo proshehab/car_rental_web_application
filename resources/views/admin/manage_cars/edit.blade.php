@@ -135,7 +135,7 @@
                         </span>
                         @enderror
                     </div>
-                    
+
                     <div class="col-md-6">
                         <label for="car_image" class="form-label">Car Image :</label>
                         <input
@@ -145,7 +145,7 @@
                             id="image"
                             accept="image/*"
                         />
-                        <img src="{{ asset('storage/' . $cars->image) }}" alt="Car Image" style="width: 100px; margin-top: 10px;">
+                        <img id="showImage" src="{{ asset( $cars->image) }}" alt="Car Image" style="width: 100px; margin-top: 10px;">
                         @error('car_image')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -153,10 +153,10 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <img id="showImage" src="{{ url('no_image.jpg') }}" alt="Admin"
                             style="width:100px; height: 100px;">
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="mt-4 text-right">
                     <button type="submit" class="btn btn-success me-2">
