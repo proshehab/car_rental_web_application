@@ -16,8 +16,12 @@ class PageController extends Controller
 
     }
 
-    public function rentals(){
+    public function car(){
         return view('frontend.booking.index');
+    }
+
+    public function carDetails(){
+        return view('frontend.booking.car-single');
     }
 
     public function bookCar(){

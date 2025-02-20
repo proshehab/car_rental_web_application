@@ -19,7 +19,8 @@ use App\Http\Controllers\Frontend\PageController;
 Route::controller(PageController::class)->group(function () {
     Route::get('/', 'index')->name('homePage');
     Route::get('/about', 'about')->name('aboutPage');
-    Route::get('/rentals', 'rentals')->name('rentalsPage');
+    Route::get('/car', 'car')->name('carPage');
+    Route::get('/car-details', 'carDetails')->name('carDetails');
     Route::get('/book-a-car', 'bookCar')->name('bookCarPage');
     Route::get('/contact', 'contact')->name('contactPage');
     // Route::get('/blog', 'blog')->name('blog.page');
