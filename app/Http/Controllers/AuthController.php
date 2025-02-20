@@ -14,7 +14,7 @@ class AuthController extends Controller
 {
 
     public function index(){
-        return view('admin.auth.login');
+        return view('frontend.auth.login');
     }
 
 
@@ -47,7 +47,7 @@ class AuthController extends Controller
     {
 
 
-        return view('admin.auth.signup');
+        return view('frontend.auth.signup');
 
 
         // if ($validator->fails()) {
