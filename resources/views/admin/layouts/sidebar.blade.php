@@ -6,7 +6,7 @@
     <a href="{{route('admin.manage-cars')}} "
         ><i class="fas fa-car me-2"></i> Manage Cars</a
     >
-    <a href="booking_management.html"
+    <a href="{{route('admin.manage-bookings')}} "
         ><i class="fas fa-book me-2"></i> Manage Bookings</a
     >
     <a href="user_management.html"

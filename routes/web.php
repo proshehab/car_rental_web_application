@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin'],function(){
         Route::post('manage-cars/edit/{id}', [CarController::class, 'update'])->name('admin.manage-cars.update');
         Route::get('manage-cars/delete/{id}', [CarController::class, 'destroy'])->name('admin.manage-cars.delete');
         Route::post('storeCar', [CarController::class, 'storeCar'])->name('admin.manage-cars.storeCar');
+        Route::get('manage-bookings', [RentalController::class, 'index'])->name('admin.manage-bookings');
         Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
     });
 });
