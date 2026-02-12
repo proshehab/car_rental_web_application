@@ -23,6 +23,12 @@ body {
 .sidebar a:hover {
     background-color: #495057;
 }
+
+.sidebar a.active {
+    background-color: #008c4d;
+    border-left: 4px solid #fff;
+}
+
 .content {
     margin-left: 250px;
     padding: 20px;
