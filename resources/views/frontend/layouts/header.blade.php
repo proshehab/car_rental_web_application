@@ -12,14 +12,7 @@
         <li class="nav-item"><a href="{{route('aboutPage')}}" class="nav-link">About</a></li>
         <li class="nav-item"><a href="{{route('carPage')}}" class="nav-link">Cars</a></li>
         <li class="nav-item"><a href="{{route('contactPage')}}" class="nav-link">Contact</a></li>
-        {{-- <li class="nav-item">
-          <a href="#" class="nav-link">
-            Cart
-            <span class="badge badge-light">
-              {{ session()->has('cart') ? count(session('cart')) : 0 }}
-            </span>
-          </a>
-        </li> --}}
+
 
       </ul>
       <a href="{{route('account.login')}}" class="btn btn-primary py-2 mr-1">Login</a> <a
