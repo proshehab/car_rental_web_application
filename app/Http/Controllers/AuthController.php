@@ -13,7 +13,8 @@ use function PHPSTORM_META\elementType;
 class AuthController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         return view('frontend.auth.login');
     }
 
@@ -26,20 +27,18 @@ class AuthController extends Controller
         ]);
 
 
-        if ($validator->passes()){
+        if ($validator->passes()) {
 
-            if(Auth::attempt(['email'=> $request->email,'password'=> $request->password])){
-                return redirect()->route('account.dashboard');
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+                return redirect()->route('account.user-dashboard')->with('success', 'You have login successfully');
             } else {
-                return redirect()->route('account.login')->with('Either email or password is incorrect');
+                return redirect()->route('account.login')->with('error', 'Either email or password is incorrect');
             }
-
-        } else{
+        } else {
             return redirect()->route('account.login')
-            ->withInput()
-            ->withErrors($validator);
+                ->withInput()
+                ->withErrors($validator);
         }
-
     }
 
     // Register method
@@ -65,14 +64,15 @@ class AuthController extends Controller
         // return response()->json(['message' => 'User registered and logged in successfully!']);
     }
 
-    public function progressRegister(Request $request){
+    public function progressRegister(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'name' => 'required | Max:20',
             'email' => 'required |email| unique:users',
             'password' => 'required|confirmed',
         ]);
 
-        if ($validator->passes()){
+        if ($validator->passes()) {
 
             $user = new User();
             $user->name = $request->name;
@@ -81,14 +81,12 @@ class AuthController extends Controller
             $user->role = 'customer';
             $user->save();
 
-            return redirect()->route('account.login')->with('success','You have register succfully');
-
-        } else{
+            return redirect()->route('account.login')->with('success', 'You have register succfully');
+        } else {
             return redirect()->route('accoutnRegister')
-            ->withInput()
-            ->withErrors($validator);
+                ->withInput()
+                ->withErrors($validator);
         }
-
     }
 
     // Login method

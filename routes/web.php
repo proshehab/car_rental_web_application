@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\RentalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Frontend\PageController;
+use App\Http\Controllers\Frontend\UserDashboardController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -29,30 +30,31 @@ Route::controller(PageController::class)->group(function () {
 
 // Customer Route
 
-Route::group(['prefix' => 'account'],function(){
-    Route::group(['middleware' => 'guest'],function(){
+Route::group(['prefix' => 'user'], function () {
+    Route::group(['middleware' => 'guest'], function () {
         Route::get('login', [AuthController::class, 'index'])->name('account.login');
         Route::get('register', [AuthController::class, 'register'])->name('accoutnRegister');
         Route::post('progressRegister', [AuthController::class, 'progressRegister'])->name('account.progressRegister');
         Route::post('authenicate', [AuthController::class, 'authenicate'])->name('account.authenicate');
     });
 
-    Route::group(['middleware' => 'auth'],function(){
+    Route::group(['middleware' => 'auth'], function () {
         Route::get('logout', [AuthController::class, 'logout'])->name('account.logout');
-        Route::get('dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
+        //Route::get('dashboard', [DashboardController::class, 'index'])->name('account.dashboard');
+        Route::get('user-dasboard', [UserDashboardController::class, 'userIndex'])->name('account.user-dashboard');
     });
 });
 
 
 // Admin Route
 
-Route::group(['prefix' => 'admin'],function(){
-    Route::group(['middleware' => 'admin.guest'],function(){
+Route::group(['prefix' => 'admin'], function () {
+    Route::group(['middleware' => 'admin.guest'], function () {
         Route::get('login', [LoginController::class, 'index'])->name('admin.login');
         Route::post('authenicate', [LoginController::class, 'authenicate'])->name('admin.authenicate');
     });
 
-    Route::group(['middleware' => 'admin.auth'],function(){
+    Route::group(['middleware' => 'admin.auth'], function () {
         Route::get('dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
         Route::get('manage-cars', [CarController::class, 'index'])->name('admin.manage-cars');
         Route::get('manage-cars/add', [CarController::class, 'add'])->name('admin.manage-cars.add');
